@@ -1,14 +1,14 @@
 /*
 *	Operating System Lab
 *	    Lab2 (Synchronization)
-*	    Student id : 
-*	    Student name : 
+*	    Student id : 32131751
+*	    Student name : jung jin man
 *
-*   lab2_example.c :
-*       - mutex usage example code.
-*       - race condition example code.
+*   lab2_bst.c :
+*       - thread-safe bst code.
+*       - coarse-grained, fine-grained lock code
 *
-*   Implement spin lock in assembly level. 
+*   Implement thread-safe bst for coarse-grained version and fine-grained version.
 */
 
 

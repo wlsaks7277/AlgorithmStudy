@@ -1,8 +1,8 @@
 /*
 *	Operating System Lab
 *	    Lab2 (Synchronization)
-*	    Student id : 
-*	    Student name : 
+*	    Student id : 32131751
+*	    Student name : jung jin man
 *
 *   lab2_bst.c :
 *       - thread-safe bst code.
@@ -62,7 +62,7 @@ int Queue_Dequeue(queue_t *q, int *value){
         {
             pthread_mutex_unlock(&q->headLock);
         }
-        return -1; //큐가 비었을때
+        return -1; //?��? 비었?�때
     }
     *value = newHead->value;
     q->head = newHead;

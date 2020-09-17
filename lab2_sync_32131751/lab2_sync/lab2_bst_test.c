@@ -1,12 +1,14 @@
 /*
 *	Operating System Lab
 *	    Lab2 (Synchronization)
+*	    Student id : 32131751
+*	    Student name : jung jin man
 *
-*   lab2_bst_test.c :
-*       - thread-safe bst test code.
-*       - coarse-grained, fine-grained lock test code
+*   lab2_bst.c :
+*       - thread-safe bst code.
+*       - coarse-grained, fine-grained lock code
 *
-* You can compare single thread result, coarse grained result and fine grained result.
+*   Implement thread-safe bst for coarse-grained version and fine-grained version.
 */
 
 #include <stdio.h>
@@ -292,7 +294,7 @@ int main(int argc, char *argv[])
     int thread_count;
     int c_count;
     
-    //옵션
+    //?�션
     char option;
     
     while( (option = getopt(argc,argv,"t:c:")) != -1 ){
@@ -315,7 +317,7 @@ int main(int argc, char *argv[])
     
     
     
-    // ============ 싱글 스레드 큐 삽입 ============
+    // ============ ?��? ?�레?????�입 ============
     coarse_grained = 1;
     time_t startTime0=0, endTime0=0;
     float gap0;
@@ -343,14 +345,14 @@ int main(int argc, char *argv[])
     
     
     
-    //시간 측정
+    //?�간 측정
     endTime0 = clock();
     gap0 = (float)(endTime0-startTime0)/(CLOCKS_PER_SEC);
-    printf("\n===== 싱글 스레드 큐 삽입(락 없음) =====\n\n");
+    printf("\n===== ?��? ?�레?????�입(???�음) =====\n\n");
     printf("Experiment info\n");
     printf("\ttest node\t: %d\n", c_count);
     printf("\ttest thread\t: %d\n", thread_count);
-    printf("\t측정 시간\t: %f 초\n\n",gap0);
+    printf("\t측정 ?�간\t: %f �?n\n",gap0);
     
     
     
@@ -361,7 +363,7 @@ int main(int argc, char *argv[])
     
     
     
-    // ============ 스레드 4개 큐 삽입 coarse ============
+    // ============ ?�레??4�????�입 coarse ============
     coarse_grained = 1;
     time_t startTime=0, endTime=0;
     float gap;
@@ -370,8 +372,7 @@ int main(int argc, char *argv[])
     
     pthread_mutex_init(&m, NULL);
     
-    //스레드 만들어주기
-    //    for(int i = 0; i < thread_count; i++)
+    //?�레??만들?�주�?    //    for(int i = 0; i < thread_count; i++)
     //    {
     //        pthread_t p[i];
     //        pthread_create(&p[i], NULL, insert, NULL);
@@ -397,21 +398,21 @@ int main(int argc, char *argv[])
     }
     
     
-    //시간 측정
+    //?�간 측정
     endTime = clock();
     gap = (float)(endTime-startTime)/(CLOCKS_PER_SEC);
-    printf("\n===== 멀티 스레드 coarse_grained 큐 삽입 =====\n\n");
+    printf("\n===== 멀???�레??coarse_grained ???�입 =====\n\n");
     printf("Experiment info\n");
     printf("\ttest node\t: %d\n", c_count);
     printf("\ttest thread\t: %d\n", thread_count);
-    printf("\t측정 시간\t: %f 초\n\n",gap);
+    printf("\t측정 ?�간\t: %f �?n\n",gap);
     
     
     
     
     
     
-    // ============ 스레드 4개 큐 삽입 fine ============
+    // ============ ?�레??4�????�입 fine ============
     coarse_grained = 0;
     
     time_t startTime2=0, endTime2=0;
@@ -439,14 +440,14 @@ int main(int argc, char *argv[])
     
     
     
-    //시간 측정
+    //?�간 측정
     endTime2 = clock();
     gap2 = (float)(endTime2-startTime2)/(CLOCKS_PER_SEC);
-    printf("\n===== 멀티 스레드 fine_grained 큐 삽입 =====\n\n");
+    printf("\n===== 멀???�레??fine_grained ???�입 =====\n\n");
     printf("Experiment info\n");
     printf("\ttest node\t: %d\n", c_count);
     printf("\ttest thread\t: %d\n", thread_count);
-    printf("\t측정 시간\t: %f 초\n\n",gap2);
+    printf("\t측정 ?�간\t: %f �?n\n",gap2);
     
     
     
@@ -455,7 +456,7 @@ int main(int argc, char *argv[])
     
     
     
-    // ============ 싱글 스레드 큐 삭제 ============
+    // ============ ?��? ?�레??????�� ============
     coarse_grained = 1;
     time_t startTime3=0, endTime3=0;
     float gap3;
@@ -481,20 +482,20 @@ int main(int argc, char *argv[])
     }
     
     
-    //시간 측정
+    //?�간 측정
     endTime3 = clock();
     gap3 = (float)(endTime3-startTime3)/(CLOCKS_PER_SEC);
-    printf("\n===== 싱글 스레드 큐 삭제(락 없음) =====\n\n");
+    printf("\n===== ?��? ?�레??????��(???�음) =====\n\n");
     printf("Experiment info\n");
     printf("\ttest node\t: %d\n", c_count);
     printf("\ttest thread\t: %d\n", thread_count);
-    printf("\t측정 시간\t: %f 초\n\n",gap3);
+    printf("\t측정 ?�간\t: %f �?n\n",gap3);
     
     
     
     
     
-    // ============ 스레드 4개 큐 삭제 coarse ============
+    // ============ ?�레??4�?????�� coarse ============
     coarse_grained = 1;
     time_t startTime4=0, endTime4=0;
     float gap4;
@@ -523,21 +524,21 @@ int main(int argc, char *argv[])
     }
     
     
-    //시간 측정
+    //?�간 측정
     endTime4 = clock();
     gap4 = (float)(endTime4-startTime4)/(CLOCKS_PER_SEC);
-    printf("\n===== 멀티 스레드 coarse_grained 큐 삭제 =====\n\n");
+    printf("\n===== 멀???�레??coarse_grained ????�� =====\n\n");
     printf("Experiment info\n");
     printf("\ttest node\t: %d\n", c_count);
     printf("\ttest thread\t: %d\n", thread_count);
-    printf("\t측정 시간\t: %f 초\n\n",gap4);
+    printf("\t측정 ?�간\t: %f �?n\n",gap4);
     
     
     
     
     
     
-    // ============ 스레드 4개 큐 삭제 fine ============
+    // ============ ?�레??4�?????�� fine ============
     coarse_grained = 0;
     
     time_t startTime5=0, endTime5=0;
@@ -568,14 +569,14 @@ int main(int argc, char *argv[])
     
     //printf("counter : %d \n",counter);
     
-    //시간 측정
+    //?�간 측정
     endTime5 = clock();
     gap5 = (float)(endTime5-startTime5)/(CLOCKS_PER_SEC);
-    printf("\n===== 멀티 스레드 fine_grained 큐 삭제 =====\n\n");
+    printf("\n===== 멀???�레??fine_grained ????�� =====\n\n");
     printf("Experiment info\n");
     printf("\ttest node\t: %d\n", c_count);
     printf("\ttest thread\t: %d\n", thread_count);
-    printf("\t측정 시간\t: %f 초\n\n",gap5);
+    printf("\t측정 ?�간\t: %f �?n\n",gap5);
     
     
     
