@@ -1,0 +1,86 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+#define Max 9
+
+using namespace std;
+
+int answer = Max;
+
+void calc(int N, int number, int i, int current) {
+
+	if (i >= Max) return;
+	if (current == number) {
+		answer = min(i, answer);
+		return;
+	}
+    
+	int temp=0;
+    
+	for (int j =0 ; j + i +1 < Max; j++) {
+        
+		temp = temp * 10 + N;
+		
+        calc(N, number, i + 1 + j, current + temp);
+		calc(N, number, i + 1 + j, current - temp);
+
+        if(current != 0) {
+		
+            calc(N, number, i + 1 + j, current * temp);
+			calc(N, number, i + 1 + j, current / temp);
+        }
+	}
+}
+
+int solution(int N, int number) {
+	if (N == number) return 1;
+	calc(N, number, 0, 0);
+	if (answer >= Max) answer = -1;
+	return answer;
+}
+
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+#define Max 9
+
+using namespace std;
+
+int answer = Max;
+
+void calc(int N, int number, int i, int current) {
+
+	if (i >= Max) return;
+	if (current == number) {
+		answer = min(i, answer);
+		return;
+	}
+	
+	for (int j =1 ; j < Max; j++) {
+		current = current * 10 + N;
+		calc(N, number, i +1+ j, current + N);
+
+
+		calc(N, number, i  +1+ j, current - N);
+
+		if (current != 0) {
+
+			calc(N, number, i  +1+ j, current * N);
+
+			calc(N, number, i  +1+ j, current / N);
+		}
+	}
+}
+
+int solution(int N, int number) {
+	if (N == number) return 1;
+calc(N, number, 0, 0);
+
+	if (answer >= Max) answer = -1;
+
+	return answer;
+}
