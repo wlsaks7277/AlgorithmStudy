@@ -1,0 +1,66 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void star(int n,vector<vector<string>> &s) {
+
+	if (n >= 3) 
+	{
+		                 //n  =  27  9  3
+		int t = n / 3;   //t  =  9   3  1
+
+		int x1 = t;
+		int y1 = t;
+
+		int x = t + t; //x,y=  18  6  2
+		int y = t + t;
+
+		for (int k = n; k <= s.size(); k = k + n) {
+			
+			for (int m = n; m <= s[0].size(); m = m + n) {
+			
+				for (int i = x1; i < x; i++) {
+					for (int j = y1; j < y; j++) {
+						s[i][j] = " ";
+					}
+				}
+				y = y + n;
+				y1 =y1 + n;
+			}
+			x = x + n;
+			x1 = x1 + n;
+			
+			y = t + t;
+			y1 = t;
+		}
+
+		star(n/3,s);
+	}
+	else return;
+}
+
+
+int main() {
+	int n = 0;
+
+	cin >> n;
+	vector<vector<string>> s(n, vector<string>(n));
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			s[i][j] = "*";
+		}
+	}
+
+	star(n,s);
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cout << s[i][j];
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
