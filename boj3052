@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+void solution(vector<int> v) {
+	vector<int> c;
+
+	for (int i = 0; i < v.size(); i++) {
+		c.push_back(v[i] % 42);
+	}
+
+	sort(c.begin(), c.end());
+	c.erase(unique(c.begin(), c.end()),c.end()); // unique 하게되면 중복된 값 나머지들이 뒤로 가게된다. 그뒤로 erase를 하면 뒤에 쓰레기값이 지워짐
+	cout << c.size();
+}
+
+
+int main() {
+	int n; 
+	vector<int> v;
+	for (int i = 0; i < 10; i++) {
+		cin >> n;
+		v.push_back(n);
+	}
+
+	solution(v);
+
+	return 0;
+}
