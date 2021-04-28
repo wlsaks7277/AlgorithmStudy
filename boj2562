@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+
+void solution(vector<int> v) {
+	vector<int> copy(v);
+
+	sort(copy.begin(), copy.end(), [](int a, int b) {
+		return a > b;
+		}
+	);
+	int x = copy[0];
+	int y = distance(v.begin(), find(v.begin(), v.end(), copy[0]))+1; 
+
+	cout << x << endl << y;
+}
+
+
+int main() {
+	vector <int> v;
+	int n;
+
+	for (int i = 0; i < 9; i++) {
+		cin >> n;
+		v.push_back(n);
+	}
+
+	solution(v);
+	return 0;
+}
