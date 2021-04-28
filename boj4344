@@ -1,0 +1,75 @@
+//"OOXXOXXOOO"와 같은 OX퀴즈의 결과가 있다.O는 문제를 맞은 것이고, X는 문제를 틀린 것이다.
+//문제를 맞은 경우 그 문제의 점수는 그 문제까지 연속된 O의 개수가 된다.
+//예를 들어, 10번 문제의 점수는 3이 된다.
+//
+//"OOXXOXXOOO"의 점수는 1 + 2 + 0 + 0 + 1 + 0 + 0 + 1 + 2 + 3 = 10점이다.
+//
+//OX퀴즈의 결과가 주어졌을 때, 점수를 구하는 프로그램을 작성하시오.
+
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+
+
+void solution(vector<string> s, string div) {
+	vector <int> v;
+
+	for (int i = 0; i < s.size(); i++) {
+		int start = 0;
+		int d = s[i].find(div, start);
+
+		while (d != -1) {
+			v.push_back(stoi(s[i].substr(start, d - start)));
+			start = d + 1;
+			d = s[i].find(div, start);
+		}
+
+		v.push_back(stoi(s[i].substr(start, d - start)));
+
+		double avg = 0;
+		int count = 0;
+
+		for (int j = 1; j < v.size(); j++) {
+			avg += v[j];
+		}
+		avg /= v[0];
+		
+		for (int j = 1; j < v.size(); j++) {
+			if (avg < v[j]) count++;
+		}
+		
+		cout << fixed;
+		cout.precision(3);
+		cout << (double) count * 100 / (double)v[0] << "%" << endl;
+
+		v.clear();
+	}
+}
+
+int main() {
+
+	int n = 0, m = 0;
+	
+
+	vector<string> v;
+	cin >> n;
+	cin.ignore();
+
+
+	for (int i = 0; i < n; i++) {
+		string x = "";
+		
+		getline(cin, x);
+		
+		v.push_back(x);
+	}
+	solution(v, " ");
+
+	return 0;
+}
