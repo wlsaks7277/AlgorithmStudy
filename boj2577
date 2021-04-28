@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+
+using namespace std;
+
+
+void solution(string temp) {
+	vector<int> v;
+
+	for (int i = 0; i < temp.length(); i++) {
+		v.push_back(temp[i] -'0'); // char 에서 int형 변환
+	}
+	for(int i =0; i<10; i++)
+	cout << count(v.begin(), v.end(),i)<<endl;
+}
+
+
+int main() {
+	int n; 
+	int temp = 1;
+	for (int i = 0; i < 3; i++) {
+		cin >> n;
+		temp *= n;
+	}
+
+	solution(to_string(temp));
+
+	return 0;
+}
