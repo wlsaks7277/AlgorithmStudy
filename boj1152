@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+
+
+using namespace std;
+
+void solution(string t) {
+
+	vector<string> v;
+	int start = 0;
+	int d = t.find(" ", start);
+
+	while (d != -1) {
+		if (t.substr(start, d - start) != "") {
+			v.push_back(t.substr(start, d - start));
+		}
+		start = d + 1;
+		d = t.find(" ", start);
+	}
+	if (t.substr(start, d - start) != "") {
+		v.push_back(t.substr(start, d - start));
+	}
+
+	cout << v.size();
+}
+
+int main() {
+	string t = "";
+
+	getline(cin, t);
+
+	solution(t);
+
+}
