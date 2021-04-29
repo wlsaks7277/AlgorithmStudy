@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+
+
+using namespace std;
+
+void solution(string t) {
+
+	vector<string> v;
+	int start = 0;
+	int d = t.find(" ", start);
+
+	while (d != -1) {
+		v.push_back(t.substr(start, d - start));
+		start = d + 1;
+		d = t.find(" ", start);
+	}
+	v.push_back(t.substr(start, d - start));
+
+	reverse(v[0].begin(), v[0].end());
+	reverse(v[1].begin(), v[1].end());
+
+	if (v[0] > v[1]) cout << v[0];
+	else cout << v[1];
+}
+
+int main() {
+
+	string t = "";
+
+	getline(cin, t);
+
+	solution(t);
+
+}
