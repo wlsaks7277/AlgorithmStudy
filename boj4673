@@ -1,0 +1,32 @@
+#include <vector>
+#include <iostream>
+
+#define max 10001
+using namespace std;
+
+void solution() {
+	vector <bool> v(max);
+
+	for (int i = 1; i < max; i++) {
+		int j = i;
+		int sum = j;
+
+		while (j != 0) {
+			sum += j % 10;
+			j /= 10;
+		}
+
+		if (sum < max) {
+			v[sum] = true;
+		}
+	}
+
+	for (int k = 1; k <max; k++) {
+		if (!v[k]) cout << k << endl;
+	}
+}
+
+int main() {
+	 solution();
+
+}
