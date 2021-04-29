@@ -1,0 +1,39 @@
+#include <vector>
+#include <iostream>
+
+
+using namespace std;
+
+void solution(int n) {
+	int count = 0;
+	if (n < 100) count = n;
+	else {
+		if (n == 1000) n = 999;
+
+		count = 99;
+		for (int i = 100; i <= n; i++) {
+
+
+			int k = i;
+			int x = k % 10; //1의자리
+
+			k /= 10;
+			int y = k % 10;//10의자리
+
+			k /= 10;
+			int z = k % 10;//100의자리
+
+			if (x - y == y - z) count++;
+
+		}
+	}
+	cout << count;
+}
+
+int main() {
+
+	int n = 0;
+	cin >> n;
+	solution(n);
+
+}
