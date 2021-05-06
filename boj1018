@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+string wb[8] = {
+		"WBWBWBWB",
+		"BWBWBWBW",
+		"WBWBWBWB",
+		"BWBWBWBW",
+		"WBWBWBWB",
+		"BWBWBWBW",
+		"WBWBWBWB",
+		"BWBWBWBW"
+};
+
+string bw[8] = {
+		"BWBWBWBW",
+		"WBWBWBWB",
+		"BWBWBWBW",
+		"WBWBWBWB",
+		"BWBWBWBW",
+		"WBWBWBWB",
+		"BWBWBWBW",
+		"WBWBWBWB"
+};
+
+int solution(vector <string> v, int i, int j) {
+	int countW = 0;
+	int countB = 0;
+	for (int k = 0; k < 8; k++) {
+		for (int m = 0; m < 8; m++) {
+			if (v[k + i][m + j] != wb[k][m]) {
+				countW++;
+
+			}
+			if (v[k + i][m + j] != bw[k][m]) {
+				countB++;
+
+			}
+		}
+	}
+
+	return min(countW, countB);
+}
+
+int main() {
+	int x, y;
+
+	int res = 99999;
+
+	cin >> x >> y;
+
+	vector<string> v;
+	string t = "";
+	cin.ignore();
+	for (int i = 0; i < x; i++) {
+
+		getline(cin, t);
+		v.push_back(t);
+
+	}
+
+
+
+	for (int i = 0; i + 7 < x; i++) {
+		for (int j = 0; j + 7 < y; j++) {
+			res = min(res, solution(v, i, j));
+		}
+	}
+
+	cout << res;
+	return 0;
+}
