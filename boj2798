@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void solution(vector<int> v , int n2) {
+	int sum = 0;
+	int min = 0;
+	for (int i = 0; i < v.size() - 2; i++) {
+		for (int j = i + 1; j < v.size() - 1; j++) {
+			for (int k = j+1; k < v.size(); k++) {
+				sum = v[i] + v[j] + v[k];
+				if (sum > min && sum <= n2) {
+					min = sum;
+				}
+			}
+		}
+	}
+	cout << min;
+}
+
+int main() {
+	int n1 = 0;
+	int n2 = 0;
+	cin >> n1 >> n2;
+
+	vector<int> v(n1);
+
+	for (int i = 0; i < n1; i++) {
+		cin >> v[i];
+	}
+
+	solution(v,n2);
+}
