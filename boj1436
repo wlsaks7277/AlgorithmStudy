@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+void solution(int n) {
+	int count = 0;
+	int x = 666;
+	string t = "";
+	//vector <string> v;
+
+	while (count< n) {
+
+		t = to_string(x);
+		if (t.find("666", 0) != -1)
+			count++;
+
+		x++;
+	}
+
+	cout << t;
+}
+
+int main() {
+	int n = 0;
+	cin >> n;
+
+	solution(n);
+	return 0;
+}
