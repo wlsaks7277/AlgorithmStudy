@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	vector<string> v;
+	int n; cin >> n;
+	string s;
+	cin.ignore();
+	for (int i = 0; i < n; i++) {
+		cin >> s;
+		v.emplace_back(s);
+	}
+	sort(v.begin(), v.end(),
+		[](string a, string b) {
+			if (a.length() == b.length()) return a < b;
+			return a.length() < b.length(); }
+	);
+
+	v.erase(unique(v.begin(), v.end()), v.end());
+
+
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << '\n';
+	}
+}
