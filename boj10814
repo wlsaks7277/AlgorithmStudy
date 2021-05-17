@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n; cin >>n;
+    cin.ignore();
+    int a;
+    string s;
+    vector<pair<int,string>> v;
+    for(int i =0 ; i< n; i++) {
+        cin >> a >> s;
+        v.emplace_back(make_pair(a,s));
+    }
+    stable_sort(v.begin(), v.end(),
+         [](pair<int,string> x, pair<int,string> y) {
+             return x.first < y.first;
+         }
+        );
+    
+    for(int i=0; i< n; i++) {
+        cout<<v[i].first << ' '<<v[i].second<<'\n';
+    }
+}
