@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	int n, a ,i; cin >> n;
+	map<int, int> m;
+	vector<int> v;
+
+	for (i = 0; i < n; i++) {
+		cin >> a;
+		if (m.empty()) m.insert(make_pair(a, 0));
+		else if (m.find(a) == m.end()) m.insert(make_pair(a, 0));
+		v.emplace_back(a);
+	}
+	i = 0;
+	for ( map<int, int> ::iterator it = m.begin(); it != m.end(); it++) {
+		it->second = i++;	
+	}
+
+	for (i = 0; i < n; i++) {
+		cout << m[v[i]] << ' ';
+	}
+}
