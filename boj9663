@@ -1,0 +1,35 @@
+#include <iostream>
+#define MAX 15
+using namespace std;
+
+int col[MAX];
+int N, total = 0;
+
+bool check(int y)
+{
+    for (int x = 0; x < y; x++)
+        if (col[x] == col[y] || abs(col[y] - col[x]) == y - x)// 대각선이거나 같은 라인
+            return false;
+    //col[y]가 의미하는 것이 X좌표, x가 의미하는것이 Y좌표이므로 차이가 일정하다면 대각선에 있다고 볼 수 있다.
+    return true;
+}
+
+void nqueen(int y)
+{
+    if (y == N)
+        total++;
+    else
+    {
+        for (int x = 0; x < N; x++)
+        {
+            col[y] = x; // y열 x행 ( col[y] ) 퀸 
+            if (check(y)) // 같은 행과 대각선에 퀸을 놓을 수 있는지 확인
+                nqueen(y + 1);
+        }
+    }
+}
+int main() {
+    cin >> N;
+    nqueen(0);
+    cout << total;
+}
