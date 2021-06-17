@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+int arr[51][51][51];
+int solution(int a, int b, int c) {
+
+	if (a <= 0 || b <= 0 || c <= 0)
+		return 1;
+
+	int& ref = arr[a][b][c];
+
+	if (a > 20 || b > 20 || c > 20)
+		return ref = solution(20, 20, 20);
+
+	if (ref != 0)
+		return ref;
+
+	if (a < b && b < c)
+		return ref = solution(a, b, c - 1) + solution(a, b - 1, c - 1) - solution(a, b - 1, c);
+
+	return ref = solution(a - 1, b, c) + solution(a - 1, b - 1, c) + solution(a - 1, b, c - 1) - solution(a - 1, b - 1, c - 1);
+
+}
+
+int main() {
+	int n, m, l;
+	while (true) {
+		cin >> n >> m >> l;
+		if (n == -1 && m == -1 && l == -1) break;
+		int x = solution(n, m, l);
+		printf("w(%d, %d, %d) = %d\n", n, m, l,x);
+	}
+	return 0;
+
+}
