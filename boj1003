@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+
+std::vector <std::pair<int, int>> v({ {1,0},{0,1} });
+
+void solution(int cnt, int m) {
+
+	int f = v[cnt - 1].first + v[cnt - 2].first;
+	int s = v[cnt - 1].second + v[cnt - 2].second;
+	v.emplace_back(std::make_pair(f, s));
+
+	if (cnt == m) {
+		return;
+	}
+
+	solution(cnt + 1, m);
+}
+
+int main() {
+	int n; std::cin >> n;
+
+	for (int i = 0; i < n; i++) {
+		int m; std::cin >> m;
+
+
+		if (m >= v.size()) {
+			solution(v.size(), m);
+		}
+		printf("%d %d\n", v[m].first,v[m].second);
+	}
+}
